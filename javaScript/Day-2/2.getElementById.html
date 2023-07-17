@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>capturing element by useing their Id's</title>
+</head>
+<body>
+        <p id="romesh"> Hello Panakaj</p>
+</body>
+</html>
+
+<script>
+    const paraElem = document.getElementById("romesh");
+
+    console.log("paraElem: ", paraElem);
+
+    const paraElemText = paraElem.innerText;
+    console.log("paraElemText: ", paraElemText);
+
+    paraElem.innerText="Hello pankaj, how are you doing at microsoft india?";
+</script>

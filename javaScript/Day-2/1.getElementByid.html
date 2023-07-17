@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getting Element by id's</title>
+</head>
+<body>
+        <p id="pankaj">Hello Pankaj</p>
+</body>
+</html>
+
+<script>
+
+    //getting the element using Id
+    const paraElem = document.getElementById("pankaj");
+    //this will give whole element with tags
+    //like this <p>Hello Pankaj</p>
+
+    console.log("paraElem: ", paraElem);
+
+    //This will give us text inside the element for ex. "Hello pankaj" that is inside the <p> element
+    const paraElemText = paraElem.innerText;
+    console.log("paraElemText: ",  paraElemText);
+
+    //changing the inner-text using the innerText Property.
+
+    paraElem.innerText = "Hello Pankaj You are selected for fornt-end developer role at microsoft.";
+    // or you can use .innerHTML to directly get the inner text and you can update the innertext
+    paraElem.innerHTML="pankaj"
+    console.log(paraElem);
+</script>

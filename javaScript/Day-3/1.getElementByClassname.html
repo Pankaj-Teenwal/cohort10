@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getting element by class names</title>
+</head>
+<body>
+            <p class="para-one" id="para-id"> pankaj</p>
+            <h1 class="para">pankaj 1</h1>
+            <span class="para"> pankaj 2</span>
+            <div class="para"> pankaj 3</div>
+            <h2 class="para" id="pankaj-3"> pankaj 3</h2>
+</body>
+</html>
+
+<script>
+    const paraElems = document.getElementsByClassName("para");
+    console.log(paraElems);
+
+    for(let i = 0; i<paraElems.length;i++)
+    {
+        paraElems[i].style.color = "red";
+        paraElems[i].style.textTransform = "uppercase";
+
+        paraElems[i].innerText="Hara Krishna";
+    }
+</script>

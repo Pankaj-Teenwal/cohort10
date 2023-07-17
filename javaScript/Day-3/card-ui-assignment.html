@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card-UI-assignment</title>
+
+    <style>
+        #container{
+            display: flex;
+            flex-wrap: wrap;
+            gap:4px ;
+        }
+        .card{
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: blue;
+        }
+
+        .red{
+            background-color: red;
+            color: white;
+        }
+
+        .blue{
+            background-color: blue;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+        <div id="container"></div>
+</body>
+</html>
+
+<script>
+
+    let numbers = [10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105];
+
+    const containerElement = document.getElementById("container");
+
+
+    for(let i=0; i<numbers.length;i++)
+    {
+        let card = document.createElement("div");
+
+        if(numbers[i] % 2 ===0){
+            card.className='card red';
+        }
+        else{
+            card.className = 'card blue'
+        }
+
+        card.innerText = numbers[i];
+
+        containerElement.appendChild(card);
+    }
+
+    
+
+</script>

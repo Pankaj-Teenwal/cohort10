@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <div id="names"></div>
+</body>
+</html>
+
+<script>
+        //getting the div element by using getElementById
+        const nameElem = document.getElementById("names");
+        //array of names
+        const namesList = ["romesh", "akash", "ali", "sonia", "palak"];
+
+        for(let i=0; i<namesList.length;i++)
+        {
+            //created a element using document.createElement
+            const ptag = document.createElement("p");
+            //pushing the array elements to the "p" element
+            ptag.innerText = namesList[i];
+            ptag.style.color = "red";
+            //appending the element to div element that have id as "names"
+            nameElem.appendChild(ptag);
+        }
+</script>
