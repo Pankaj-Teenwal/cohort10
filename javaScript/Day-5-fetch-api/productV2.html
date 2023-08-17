@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  const getGreetings = (name) => {
+    return `Hello ${name}, welcome to C10`;
+  };
+
+  fetch("https://fakestoreapi.com/products")
+    .then((pankaj) => pankaj.json())
+    .then((pankaj) => {
+      console.log("pankaj:", pankaj);
+      console.log(getGreetings("pankaj"));
+      console.log(getGreetings("arvind"));
+      console.log(getGreetings("vikash"));
+      console.log(getGreetings("vishal"));
+    })
+    .catch((err) => {
+      console.log("err", err);
+    });
+</script>

@@ -1,0 +1,101 @@
+<!--
+
+    @description
+    here we are fetching a api and then, we are rendering the UI based on the json array data
+
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch-API-Render-UI</title>
+
+    <style>
+        body{
+            background-color: silver;
+        }
+        #products{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .card{
+            background-color: white;
+            width: 150px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="products"></div>
+  </body>
+</html>
+
+<script>
+
+
+    const productContainer = document.getElementById("products");
+
+
+    //fetching the API & Parsing the json data
+  const result = fetch("https://fakestoreapi.com/products")
+    .then((nonParsedData) => nonParsedData.json())
+    .then((parsedData) => {
+      console.log("parsed Data: ", parsedData);
+      renderUI(parsedData); //calling renderUI function inside the promis
+    });
+
+
+    //render UI function
+
+    const renderUI = (data)=>{
+        console.log("data inside the renderUI function", data);
+
+        for(let i=0; i<data.length;i++)
+        {
+            let product = data[i];
+
+            console.log(product.title);
+            console.log(product.price);
+
+           const cardElement = document.createElement("div");
+
+           cardElement.className="card";
+
+            const imgElement = document.createElement("img");
+
+            imgElement.src = product.image;
+            imgElement.style.width = "150px";
+            imgElement.style.height = "150px"
+
+            cardElement.appendChild(imgElement);
+
+
+           const titleElement = document.createElement("p");
+            
+           titleElement.innerText = product.title;
+
+           const priceElement = document.createElement("p");
+
+           priceElement.innerText = product.price;
+
+           cardElement.appendChild(titleElement);
+           cardElement.appendChild(priceElement);
+
+           productContainer.appendChild(cardElement);
+
+        }
+
+
+    }
+</script>

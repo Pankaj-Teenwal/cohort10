@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch api</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  function getGreetings(name) {
+    return `Hello ${name}, welcome to C10`;
+  }
+
+  //calling an API using Fetch
+
+  fetch("https://fakestoreapi.com/products")
+    .then((krishna) => krishna.json())
+    .then((krishna) => console.log("Krishna Data: ", krishna))
+    .catch((err) => console.log("err: ", err));
+
+  console.log(getGreetings("pankaj"));
+  console.log(getGreetings("vishal"));
+  console.log(getGreetings("arvind"));
+
+  const multiply = (num1, num2) => num1 * num2;
+  console.log(multiply(10, 20));
+</script>

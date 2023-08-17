@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+    <style>
+      #products {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 300px;
+        background-color: #fff;
+        color: rgb(7, 0, 0);
+        padding: 12px;
+      }
+      .card:hover {
+        background-color: #888686;
+      }
+      .searchBar {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0px;
+        gap: 10px;
+      }
+      .searchBar input {
+        width: 400px;
+        height: 30px;
+        border-radius: 4px;
+        border: 1px solid #989898fc;
+      }
+      .searchBar input:focus {
+        outline: #0340f660 solid 3px;
+        border: 1px solid #0340f6fc;
+      }
+      .searchBar button {
+        border: 1px solid #0340f6fc;
+        border-radius: 4px;
+        color: #0340f6fc;
+        cursor: pointer;
+        background-color: #fff;
+      }
+      .searchBar button:hover {
+        background-color: #0340f6fc;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="searchBar">
+      <input
+        type="search"
+        placeholder="search"
+        id="searchBarValue"
+      />
+      <button id="search"    onclick="search()">search</button>
+    </div>
+    <div id="products"></div>
+  </body>
+</html>
+
+<script>
+  let searchCount = [];
+   
+
+  function search() {
+    let searchbox = document
+      .getElementById("searchBarValue")
+      .value.toLowerCase();
+    const products = document.querySelectorAll(".card");
+
+    for (let i = 0; i < products.length; i++) {
+      const product = products[i];
+      const title = product.innerText.toLowerCase();
+
+      if (title.includes(searchbox)) {
+        product.style.display = "";
+        console.log(searchbox);
+      } else {
+        product.style.display = "none";
+      }
+    }
+    searchCount++;
+        console.log(`Search loop count: ${searchCount}`);
+  }
+
+
+
+  const productListContainer = document.getElementById("products");
+  const result = fetch("https://fakestoreapi.com/products");
+
+  result
+    .then(function (aayaHuaData) {
+      return aayaHuaData.json();
+    })
+    .then(function (meraUparSeAayaHuaData) {
+      console.log("Result: ", meraUparSeAayaHuaData);
+
+      for (let i = 0; i < meraUparSeAayaHuaData.length; i++) {
+        const currentProduct = meraUparSeAayaHuaData[i];
+
+        const cardElem = document.createElement("div");
+        cardElem.className = "card";
+
+        const titleElem = document.createElement("p");
+        titleElem.innerText = meraUparSeAayaHuaData[i].title;
+        titleElem.style.color = "red";
+
+        const priceElem = document.createElement("p");
+        priceElem.innerText = meraUparSeAayaHuaData[i].price;
+
+        const imgElement = document.createElement("img");
+        imgElement.src = meraUparSeAayaHuaData[i].image;
+        imgElement.style.width = "120px";
+        imgElement.style.height = "120px";
+        imgElement.style.backgroundColor = "black";
+
+        cardElem.appendChild(imgElement);
+        cardElem.appendChild(titleElem);
+        cardElem.appendChild(priceElem);
+        productListContainer.appendChild(cardElem);
+      }
+    });
+
+  /* function giveMeDataAndILLLoopAndRenderUI(data) {
+    console.log("Data insider renderUI: ", data);
+  } */
+
+
+</script>

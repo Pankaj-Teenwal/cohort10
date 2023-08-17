@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+
+    <style>
+      body {
+        background-color: silver;
+      }
+      .card {
+        width: 150px;
+        background-color: white;
+        padding: 11px;
+      }
+
+      #products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      #search-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      #search-container input {
+        height: 22px;
+        padding: 12px 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="search-container"><input type="text" placeholder="Search" id="search-input" /></div>
+    <div id="products"></div>
+  </body>
+</html>
+
+<script>
+  let userInput="";
+
+  //Targeting the products div.
+  const productContainer = document.getElementById("products");
+
+
+    //getting the userInput
+    const searchInput = document.getElementById("search-input");
+    searchInput.addEventListener("input",(event)=>{
+      userInput = event.target.value;
+
+     //jhjhjhjhjhj console.log(userInput)
+    });
+
+    function searchProduct(){
+      const searchInput = document.getElementById("search-input");
+
+      searchInput.addEventListener("input", (event)=>{
+        userInput = event.target.value;
+        console.log(userInput)
+      })
+
+     console.log(userInput)
+    }
+  
+    
+
+
+  //fetching the api
+  const result = fetch("https://fakestoreapi.com/products")
+  //parsing the data into json
+  result.then((nonParsedData)=>nonParsedData.json())
+  .then((parsedData)=>{
+      console.log("Parsed data :", parsedData);
+
+
+      //iteraing all the elements of json array
+      for(let i=0; i< parsedData.length;i++)
+      {
+          const product = parsedData[i];
+          //console.log("product: ", product);
+
+         const cardElem = document.createElement("div");
+          cardElem.className="card";
+
+          const titleElem = document.createElement("p");
+
+          titleElem.innerText = product.title;
+
+          const priceElem = document.createElement("p");
+
+          priceElem.innerText = parsedData[i].price;
+
+          const imgElem = document.createElement("img");
+
+          imgElem.src= parsedData[i].image;
+          imgElem.style.width="150px";
+          imgElem.style.height="150px";
+          cardElem.appendChild(imgElem);
+          cardElem.appendChild(titleElem);
+          cardElem.appendChild(priceElem);
+          //console.log("cardElement",cardElem);
+
+
+          productContainer.appendChild(cardElem);
+
+
+
+      }
+
+      
+
+      
+
+  });
+</script>

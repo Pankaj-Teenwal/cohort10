@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    const parseData = (x)=>{
+        console.log("Non ParsedData:", x);
+        return x.json();
+    }
+
+    const showResult =(parseData)=>{
+        console.log("Result:", parseData);
+    } 
+
+    const handleError = (error)=>{
+        console.log("error: ", error);
+    }
+
+    fetch("https://fakestoreapi.com/products").then(parseData).then(showResult).catch(handleError);
+    
+</script>
