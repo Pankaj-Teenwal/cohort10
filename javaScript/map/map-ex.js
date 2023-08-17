@@ -45,3 +45,12 @@
  });
 
  console.log({arrPlusOne}, {arrMultiplyTwo}, {arrMultiplyByTwoIfOdd})
+
+
+ const nums = [1,2,3,4,5,6,7];
+
+ const multipleByTwo = nums.map((currentItem, index, arr)=>{
+    console.log({currentItem, index, arr});
+ }); 
+ // here current item is the array element and index show the current index of the element and arr is show array of element index and arr is optional to pass in this function.
+ 
