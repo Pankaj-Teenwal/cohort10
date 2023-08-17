@@ -29,17 +29,30 @@ const p = [
     },
   ];
 
-  
-  const newArr = p.map((item)=>{
-        if(item.isActive === true){
-            item.isActive = "Avaliable";
-        }
-        else{
-            item.isActive = "Not avaliable";
-        }
+  //this code will make changes to main p object
 
-        return item;
+  // const newArr = p.map((item)=>{
+  //       if(item.isActive === true){
+  //           item.isActive = "Avaliable";
+  //       }
+  //       else{
+  //           item.isActive = "Not avaliable";
+  //       }
+
+  //       return item;
+  // })
+
+  // console.log({newArr});
+
+  const newArr = p.map((item)=>{
+     const newItem = {...item};
+     if(newItem.isActive === true){newItem.isActive = "Avaliable"}
+     else{
+      newItem.isActive = "Not Avliable";
+     }   
+
+     return newItem;
   })
 
-  console.log({newArr});
-
+  console.log({p});
+console.log({newArr});
