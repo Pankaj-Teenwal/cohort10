@@ -46,5 +46,6 @@ const result = p.map((item)=>({
 console.log({result});
 console.log({p});
 
-// const result = p.map((item)=>{
-//     ...item,isActive:item.isActive?"Avaliable":"Not Avaliable"})
+//  const result = p.map((item)=>{
+//    ...item,isActive:item.isActive?"Avaliable":"Not Avaliable"})
+
